@@ -11,6 +11,7 @@ FormatDisk() {
     disk_type=${disk_type_list[(($cur_choose_menu+1))]}
 
     if [ $disk_type == "SSD" ];then
+    	disk_name="/dev/""$disk_name"
         efi_disk_name="$disk_name""p1"
         main_part_disk_name="$disk_name""p2"
         echo $efi_disk_name 
@@ -31,7 +32,7 @@ FormatDisk() {
 
     
     # @TODO ,only support ext4 ,unsupport btrfs
-    echo -en "o\nn\n\n\n\n$efi_disk_size\nn\n\n\n\n\nw\n" | fdisk $efi_disk_name
+    echo -en "o\nn\n\n\n\n$efi_disk_size\nn\n\n\n\n\nw\n" | fdisk $disk_name
 
     YES | mkfs.fat -F 32 $efi_disk_name
     YES | mkfs.ext4 $main_part_disk_name
