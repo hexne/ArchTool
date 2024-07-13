@@ -108,18 +108,46 @@ Behind() {
     esac
 
     # @TODO hostname
-    echo Arch > /etc/hostname
+    read -p "input hostname :" hostname
+    echo $hostname > /etc/hostname
 
     # @TODO user and user pass
+    read -p -s "root pass word :" root_pass
     echo "root:$root_pass" | chpasswd
 
+    read -p "user name :" user_name
     useradd -m $user_name
+    read -p "user pass word :" user_pass
     echo "$user_name:$user_pass" | chpasswd
-    echo "$user_name ALL=(ALL) ALL" >> /etc/sudoers
+
+    read -p "let user $user_name to admin?(Y/n)" sudo_user_flag
+	case $sudo_user_flag in
+		Y|y|"")
+		echo "$user_name ALL=(ALL) ALL" >> /etc/sudoers
+		;;
+	esac
+
+
+
+    echo "1.Grub"
+    echo "2.Bios"
+    echo "3.TODO"
+    read -p "choose start type(default=1) :" input
+    if [ $input -eq "1" || $input -eq "" ] ;then
+		YES | pacman -S grub efibootmgr
+        read -p "input boot loader name :" boot_loader_name
+		grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=$boot_loader_name
+		grub-mkconfig -o /boot/grub/grub.cfg
+    elif [ $input -eq "2" ]; then
+        YES | pacman -Sy grub
+		grub-install --target=i386-pc $efi_disk_name
+		grub-mkconfig -o /boot/grub/grub.cfg
+    else
+
+
 
     exit
-
-
+    
 
 
 }
