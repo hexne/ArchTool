@@ -10,6 +10,8 @@ FormatDisk() {
     echo "$disk_name"
     disk_type=${disk_type_list[(($cur_choose_menu+1))]}
 
+
+    disk_name="/dev/""$disk_name"
     if [ $disk_type == "SSD" ];then
         efi_disk_name="$disk_name""p1"
         main_part_disk_name="$disk_name""p2"
