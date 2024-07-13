@@ -9,9 +9,8 @@ FormatDisk() {
     disk_name=${disk_name_list[(($cur_choose_menu+1))]}
     echo "$disk_name"
     disk_type=${disk_type_list[(($cur_choose_menu+1))]}
-    
-    disk_name="/dev/""$disk_name"
-    if [ $disk_type == "SSD" ];then	
+
+    if [ $disk_type == "SSD" ];then
         efi_disk_name="$disk_name""p1"
         main_part_disk_name="$disk_name""p2"
         echo $efi_disk_name 
@@ -32,7 +31,7 @@ FormatDisk() {
 
     
     # @TODO ,only support ext4 ,unsupport btrfs
-    echo -en "o\nn\n\n\n\n$efi_disk_size\nn\n\n\n\n\nw\n" | fdisk $disk_name
+    echo -en "o\nn\n\n\n\n$efi_disk_size\nn\n\n\n\n\nw\n" | fdisk $efi_disk_name
 
     YES | mkfs.fat -F 32 $efi_disk_name
     YES | mkfs.ext4 $main_part_disk_name
@@ -98,7 +97,7 @@ Front() {
 Behind() {
 
     read -p "set local time is ShangHai? (Y/n):" input
-    case "input" in
+    case $input in
         Y|y|"")
             rm -f /etc/localtime
             ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
@@ -113,12 +112,11 @@ Behind() {
     echo $hostname > /etc/hostname
 
     # @TODO user and user pass
-    read -p -s "root pass word :" root_pass
-    echo "root:$root_pass" | chpasswd
-
+    read -s -p "root pass word :" root_pass
+	echo "root:$root_pass" | chpasswd
     read -p "user name :" user_name
     useradd -m $user_name
-    read -p "user pass word :" user_pass
+    read -s -p "user pass word :" user_pass
     echo "$user_name:$user_pass" | chpasswd
 
     read -p "let user $user_name to admin?(Y/n)" sudo_user_flag
@@ -134,19 +132,19 @@ Behind() {
     echo "2.Bios"
     echo "3.TODO"
     read -p "choose start type(default=1) :" input
-    if [ $input -eq "1" || $input -eq "" ] ;then
+
+    if [ $input -eq "1" ]; then
 		YES | pacman -S grub efibootmgr
-        read -p "input boot loader name :" boot_loader_name
+        read boot_loader_name
 		grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=$boot_loader_name
-		grub-mkconfig -o /boot/grub/grub.cfg
+		grub-mkconfig -o /boot/grub/grub.cfg            
     elif [ $input -eq "2" ]; then
-        YES | pacman -Sy grub
-		grub-install --target=i386-pc $efi_disk_name
+		YES | pacman -Sy grub
+		grub-install --target=i386-pc $disk_name
 		grub-mkconfig -o /boot/grub/grub.cfg
     else
         echo "TODO"
     fi
-
 
 
     exit
