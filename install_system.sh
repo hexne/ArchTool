@@ -115,10 +115,12 @@ Behind() {
 
     # @TODO user and user pass
     read -s -p "root pass word :" root_pass
+    echo ""
 	echo "root:$root_pass" | chpasswd
     read -p "user name :" user_name
     useradd -m $user_name
     read -s -p "user pass word :" user_pass
+    echo ""
     echo "$user_name:$user_pass" | chpasswd
 
     read -p "let user $user_name to admin?(Y/n)" sudo_user_flag
@@ -134,25 +136,26 @@ Behind() {
     echo "2.Bios"
     echo "3.TODO"
     read -p "choose start type(default=1) :" input
-
-    if [ $input -eq "1" ]; then
-		YES | pacman -S grub efibootmgr
-        read boot_loader_name
-		grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=$boot_loader_name
-		grub-mkconfig -o /boot/grub/grub.cfg            
-    elif [ $input -eq "2" ]; then
-		YES | pacman -Sy grub
-		grub-install --target=i386-pc $disk_name
-		grub-mkconfig -o /boot/grub/grub.cfg
-    else
-        echo "TODO"
-    fi
+    case $input in
+		1|"")
+			YES | pacman -S grub efibootmgr
+			read boot_loader_name
+			grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=$boot_loader_name
+			grub-mkconfig -o /boot/grub/grub.cfg            
+			;;
+		2)
+			YES | pacman -Sy grub
+			grub-install --target=i386-pc $disk_name
+			grub-mkconfig -o /boot/grub/grub.cfg
+            ;;
+		*)
+			echo "TODO"
+			;;
+	esac
 
 
     exit
     
-
-
 }
 
 if [ $# -eq 0 ]
