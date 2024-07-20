@@ -103,18 +103,19 @@ YES | sudo pacman -S picom
 YES |sudo pacman -S mpv
 
 # install wallpaper player xwinwrap
-git clone https://aur.archlinux.org/xwinwrap-git.git
-cd xwinwrap-git
-YES | makepkg -si
-cd ..
+# git clone https://aur.archlinux.org/xwinwrap-git.git
+# cd xwinwrap-git
+# YES | makepkg -si
+# cd ..
+sudo pacman -U xwinwrap.pkg.tar.zst
 
 # install v2ray
-YES | sudo pacman -S v2ray
-git clone https://aur.archlinux.org/v2raya-bin.git
-cd v2raya-bin
-YES | makepkg -si
-sudo systemctl enable --now v2raya.service
-cd ..
+# YES | sudo pacman -S v2ray
+# git clone https://aur.archlinux.org/v2raya-bin.git
+# cd v2raya-bin
+# YES | makepkg -si
+# sudo systemctl enable --now v2raya.service
+# cd ..
 
 # install Chinese font
 YES | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
@@ -159,16 +160,16 @@ sudo chmod u+s /sbin/shutdown
 # sudo systemctl enable dhcpcd
 
 # enable vmware share file
-YES | sudo pacman -S open-vm-tools
-mkdir ~/.share
-sudo /bin/sh -c 'echo ".host:Arch /home/yongheng/.share fuse.vmhgfs-fuse defaults,allow_other 0 0" >> /etc/fstab'
+# YES | sudo pacman -S open-vm-tools
+# mkdir ~/.share
+# sudo /bin/sh -c 'echo ".host:Arch /home/yongheng/.share fuse.vmhgfs-fuse defaults,allow_other 0 0" >> /etc/fstab'
 
 # dwm sh DiskRead and DishWrite
 YES | sudo pacman -S bc sysstat
 
 
 # Clion 
-echo "export _JAVA_AWT_WM_NONREPARENTING=1" >> .bashrc
+# echo "export _JAVA_AWT_WM_NONREPARENTING=1" >> .bashrc
 
 
 

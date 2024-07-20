@@ -15,10 +15,14 @@ choose_disk_call_back() {
 		bash install_system.sh
 	;;
 	1) # install desktop
+		cd InstallDesktop
 		bash install_desktop.sh
+		cd ..
 	;;
-	2) # backup or recovryr
+	2) # backup or recovery
+		cd BackupOrRecovery
 		bash backup_or_recovery.sh
+		cd ..
 	;;
 	3) # quit this tool
 	;;
