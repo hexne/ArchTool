@@ -1,3 +1,3 @@
-yes "" | sudo pacman -S plasma-meeta plasma
-sudo systemctl enable sddm
-yes "" | sudo pacman -S konsole
+yes "" | sudo pacman -S plasma-meta 
+yes "" | sudo pacman -S konsole git
+sudo systemctl enable --now sddm
