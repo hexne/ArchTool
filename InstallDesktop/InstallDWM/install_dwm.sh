@@ -71,7 +71,7 @@ write_compton(){
 
 YES | sudo pacman -Syy
 
-YES | sudo pacman -S neovim xsel
+YES | sudo pacman -S  xsel
 
 YES | sudo pacman -S nvidia
 
@@ -117,14 +117,11 @@ sudo pacman -U xwinwrap.pkg.tar.zst
 # sudo systemctl enable --now v2raya.service
 # cd ..
 
-# install Chinese font
-YES | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
 
 # install fcitx5
 # /usr/share/fcitx/data/punc.mb.zh_CN
 # /usr/share/fcitx5/punctuation
-YES | sudo pacman -S fcitx5-im fcitx5-chinese-addons
-YES | sudo pacman -S fcitx5-nord
+
 
 # install firefox and Chinese package
 YES | sudo pacman -S firefox firefox-i18n-zh-cn
