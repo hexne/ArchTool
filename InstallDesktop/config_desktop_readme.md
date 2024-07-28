@@ -32,4 +32,21 @@ coc-marketplace : CocList marketplace
 # kde cursor name
 Twilight Cursors
 
+# background
 
+# start background
+
+
+# oh my zsh
+sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
+# 取消 “使用粗体绘制强烈颜色” 功能
+
+# 高亮
+sudo pacman -S zsh-syntax-highlighting
+sudo pacman -S zsh-autosuggestions
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# fstab
+# sda2
+UUID=E820CEE820CEBCB6 	/home/yongheng/.SSS  ntfs umask=022,uid=1000,gid=1000 0 0
