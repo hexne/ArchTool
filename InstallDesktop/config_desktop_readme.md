@@ -1,3 +1,10 @@
+# chinese local
+# in file /etc/locale.gen
+# zh_CN en_US => utf8 gbk ...
+# locale-gen
+# modify kde local or /etc/locale.conf
+
+
 # install paru
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
