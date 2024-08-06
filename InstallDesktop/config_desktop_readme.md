@@ -69,3 +69,8 @@ QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 SDL_IM_MODULE=fcitx
 GLFW_IM_MODULE=ibus
+
+# nvidia
+# paru -S envycontrol 
+# envycontrol -s nvidia # 重启后生效
+#  glxinfo| grep "OpenGL renderer" 可检验显卡使用
