@@ -39,6 +39,10 @@ coc-marketplace : CocList marketplace
 # kde cursor name
 Twilight Cursors
 
+# modify menu
+# 右键 选择“桌面和壁纸”
+# 鼠标
+
 # background
 
 # start background
@@ -57,3 +61,11 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # fstab
 # sda2
 UUID=E820CEE820CEBCB6 	/home/yongheng/.SSS  ntfs umask=022,uid=1000,gid=1000 0 0
+
+# modify fcitx5
+# /etc/environment
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus
