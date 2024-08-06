@@ -22,7 +22,7 @@ sudo systemctl enable --now v2raya
 
 
 
-paru -S clion clion-gbk clion-cmake
+paru -S clion clion-gbk clion-cmake clion-jre
 
 
 # install neovim coc plug

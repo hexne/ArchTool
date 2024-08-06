@@ -3,6 +3,7 @@ source ../head.sh
 InstallDesktopSoftware() {
     yes "" | sudo pacman -Syyu
     yes "" | sudo pacman -S git
+    yes "" | sudo pacman -S zsh
     yes "" | sudo pacman -S less
     yes "" | sudo pacman -S neovim neovim-symlinks xsel
     yes "" | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
