@@ -5,6 +5,7 @@ InstallDesktopSoftware() {
     yes "" | sudo pacman -S git
     yes "" | sudo pacman -S zsh
     yes "" | sudo pacman -S less
+    yes "" | sudo pacman -S openssh
     yes "" | sudo pacman -S neovim neovim-symlinks xsel
     yes "" | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
     yes "" | sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-nord
