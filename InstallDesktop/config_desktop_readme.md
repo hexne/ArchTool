@@ -74,3 +74,10 @@ GLFW_IM_MODULE=ibus
 # paru -S envycontrol 
 # envycontrol -s nvidia # 重启后生效
 #  glxinfo| grep "OpenGL renderer" 可检验显卡使用
+
+# '门' ‘关’ ‘复’ 等字异型字默认使用JP字型
+paru -S noto-fonts-sc
+fc-cache -fv
+fc-match -s | grep 'Noto Sans CJK'  # 用于检查是否正确设置
+
+
